@@ -8,3 +8,4 @@ package-lock.json
 typings
 yarn-error.log
 yarn.lock
+.idea
