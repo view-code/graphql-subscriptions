@@ -47,9 +47,9 @@ function buildSchema(iterator, filterFn = defaultFilter) {
             console.log('withFilter filterFn', payload)
             return true
           }),
-          resolve: (...allArgs) => {
+          resolve: (data, ...allArgs) => {
             // console.log('allArgs', allArgs)
-            return 'FIRST_EVENT';
+            return data.result;
           },
         },
       },
@@ -99,7 +99,7 @@ async function test() {
   const r = payload1.then(res => {
     console.log(res.value.data.testSubscription)
   });
-  pubsub.publish(FIRST_EVENT, {a: 1});
+  pubsub.publish(FIRST_EVENT, {result: 'good'});
   return r;
 }
 
